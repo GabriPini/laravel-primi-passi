@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>laravel-primi-passi</title>
-</head>
-<style>
-    *{
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Laravel</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <style>
+
+        *{
         margin: 0;
         padding: 0;
         box-sizing: 0;
@@ -46,20 +51,31 @@
     h1{
         padding-top: 30px;
     }
-</style>
+        .unstyled {
+            list-style: none;
+        }
+    </style>
+</head>
 
 <body>
 
+
     <header class="flex-center">
-        <div class="links">
+        <div class="links ">
             <a href="{{route('home')}}">Home</a>
             <a href="{{route('fav')}}">Favourites</a>
 
         </div>
     </header>
+    <h1 class="text-center">The favourites Movie and Series of {{ $name }} </h1>
+    <ul>
 
-    <h1 class="text-center">{{$greetings}}</h1>
-    <h2 class="text-center">made by {{$name}}</h2>
+        @foreach($posts as $post)
+        <li class="unstyled text-center">
+            <h3>{{ $post }}</h3>
+        </li>
+        @endforeach
+    </ul>
 
 </body>
 
